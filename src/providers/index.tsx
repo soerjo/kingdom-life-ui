@@ -3,7 +3,6 @@ import { AbstractIntlMessages, NextIntlClientProvider } from 'next-intl';
 import { getLocale, getMessages } from 'next-intl/server';
 
 import { TooltipProvider } from '@/components/ui/tooltip';
-import { AuthProvider } from '@/features/auth/providers/auth-provider';
 import { AppStoreProvider } from '@/stores';
 import defaultMessages from '@/i18n/messages/id.json';
 
@@ -23,12 +22,10 @@ export async function Providers({ children }: { children: React.ReactNode }) {
 
   return (
     <NextIntlClientProvider locale={locale} messages={messages}>
-      <ThemeProvider disableTransitionOnChange enableSystem attribute="class" defaultTheme="system">
+      <ThemeProvider disableTransitionOnChange enableSystem attribute="class" defaultTheme="dark">
         <AppStoreProvider>
           <QueryProvider>
-            <AuthProvider>
-              <TooltipProvider>{children}</TooltipProvider>
-            </AuthProvider>
+            <TooltipProvider>{children}</TooltipProvider>
           </QueryProvider>
           <ToasterProvider />
         </AppStoreProvider>

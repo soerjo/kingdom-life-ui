@@ -1,5 +1,5 @@
-import { SsAppShell } from '@/components/layouts/ss-app-shell';
+import React from 'react';
 
 export default function MarketingLayout({ children }: { children: React.ReactNode }) {
-  return <SsAppShell>{children}</SsAppShell>;
+  return <div className="w-full min-h-screen flex flex-col">{children}</div>;
 }
