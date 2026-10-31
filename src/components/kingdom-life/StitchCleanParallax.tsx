@@ -3,6 +3,7 @@
 import React from 'react';
 import { useParallax } from '@/hooks/useParallax';
 import { KingdomHeader } from './KingdomHeader';
+import { KingdomFooter } from './KingdomFooter';
 
 export function StitchCleanParallax() {
   useParallax();
@@ -992,80 +993,7 @@ export function StitchCleanParallax() {
       {/*  ========================================================
        SEGMENT 9: FOOTER — GELAP (DARK)
        ========================================================  */}
-      <footer className="bg-[#08090c] text-white/70 py-16 px-6 lg:px-12 text-xs">
-        <div className="max-w-7xl mx-auto space-y-12">
-          {/*  4 Columns Grid  */}
-          <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-10">
-            {/*  Col 1: Office Address  */}
-            <div className="space-y-3">
-              <span className="text-[11px] uppercase font-bold tracking-widest text-white block">CHURCH OFFICE</span>
-              <p className="leading-relaxed text-white/70">
-                Grand Indonesia Menara BCA 39th Floor
-                <br />
-                Jl. M.H. Thamrin No. 1, Jakarta Pusat 10310
-                <br />
-                Indonesia
-                <br />
-                <span className="font-mono text-white/90 block mt-2">(021) 2358 7000</span>
-              </p>
-            </div>
-            {/*  Col 2: Privacy & Legal  */}
-            <div className="space-y-3">
-              <span className="text-[11px] uppercase font-bold tracking-widest text-white block">PRIVACY POLICY</span>
-              <ul className="space-y-2">
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Privacy Policy
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Terms of Use
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Child Safety &amp; Protection
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/*  Col 3: Church Resources  */}
-            <div className="space-y-3">
-              <span className="text-[11px] uppercase font-bold tracking-widest text-white block">KINGDOM LIFE</span>
-              <ul className="space-y-2">
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Learning Center &amp; Academy
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Join One Kingdom Life
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Connect Group Directory
-                  </a>
-                </li>
-                <li>
-                  <a className="hover:text-white transition-colors" href="#">
-                    Pastoral Care Request
-                  </a>
-                </li>
-              </ul>
-            </div>
-            {/*  Col 4  */}
-            <div className="space-y-3"></div>
-          </div>
-          {/*  Copyright Bottom Bar  */}
-          <div className="pt-8 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40">
-            <p>© 2025 Kingdom Life Church. All rights reserved. Encounter God. Walk in Supernatural Life.</p>
-            <p className="font-mono">v2.10.2025.KLIFE</p>
-          </div>
-        </div>
-      </footer>
+      <KingdomFooter />
       {/*  ========================================================
        VANILLA JAVASCRIPT: SMOOTH HIGH-PERFORMANCE PARALLAX
        ========================================================  */}
