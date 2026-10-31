@@ -15,12 +15,10 @@ export const SpotlightCard = ({ children, className, spotlightColor = 'from-prim
   const [opacity, setOpacity] = useState(0);
 
   const handleMouseMove = (e: MouseEvent<HTMLDivElement>) => {
-    if (!cardRef.current) return;
-
-    const { left, top, width, height } = cardRef.current.getBoundingClientRect();
-    const x = ((e.clientX - left) / width) * 100;
-    const y = ((e.clientY - top) / height) * 100;
-
+    const el = cardRef.current;
+    const rect = el!.getBoundingClientRect();
+    const x = ((e.clientX - rect.left) / rect.width) * 100;
+    const y = ((e.clientY - rect.top) / rect.height) * 100;
     setPosition({ x, y });
   };
 

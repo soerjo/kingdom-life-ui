@@ -29,15 +29,14 @@ export const CountUp = ({
   const isInView = useInView(ref, { once: true });
 
   useEffect(() => {
-    if (!isInView) return;
-
     let startTime: DOMHighResTimeStamp;
+    const dur = duration > 0 ? duration : 1;
     const animate = (currentTime: DOMHighResTimeStamp) => {
-      if (!startTime) startTime = currentTime;
-      const progress = (currentTime - startTime) / (duration * 1000);
+      startTime = startTime || currentTime;
+      const progress = (currentTime - startTime) / (dur * 1000);
 
       if (progress < 1) {
-        const easedProgress = 0.5 - Math.cos(progress * Math.PI) / 2; // Ease in-out
+        const easedProgress = 0.5 - Math.cos(progress * Math.PI) / 2;
         const currentValue = start + easedProgress * (end - start);
         setCount(currentValue);
         requestAnimationFrame(animate);

@@ -15,9 +15,10 @@ export const SplitText = ({ text, by = 'word', className, wordWrapper, charWrapp
   const renderCharacters = (word: string, wordIndex: number) => {
     return word.split('').map((char, charIndex) => {
       const key = `char-${wordIndex}-${charIndex}`;
-      return charWrapper ? (
-        <React.Fragment key={key}>{charWrapper(char, charIndex)}</React.Fragment>
-      ) : (
+      if (charWrapper) {
+        return <React.Fragment key={key}>{charWrapper(char, charIndex)}</React.Fragment>;
+      }
+      return (
         <span key={key} className="inline-block whitespace-nowrap leading-tight">
           {char}
         </span>
@@ -28,11 +29,13 @@ export const SplitText = ({ text, by = 'word', className, wordWrapper, charWrapp
   const renderWords = () => {
     return text.split(' ').map((word, wordIndex) => {
       const key = `word-${wordIndex}`;
-      return wordWrapper ? (
-        <React.Fragment key={key}>{wordWrapper(word, wordIndex)}</React.Fragment>
-      ) : (
+      const inner = by === 'character' ? renderCharacters(word, wordIndex) : word;
+      if (wordWrapper) {
+        return <React.Fragment key={key}>{wordWrapper(word, wordIndex)}</React.Fragment>;
+      }
+      return (
         <span key={key} className="inline-block whitespace-nowrap leading-tight mr-2">
-          {by === 'character' ? renderCharacters(word, wordIndex) : word}
+          {inner}
         </span>
       );
     });

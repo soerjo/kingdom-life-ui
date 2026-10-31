@@ -42,3 +42,9 @@ describe('LandingPage SSR & Client Component', () => {
     expect(screen.getByText(/Filter Sesi Aktif:/i)).toBeInTheDocument();
   });
 });
+
+it('renders initialConnectCategory when provided via searchParams', async () => {
+  const Component = await LandingPage({ searchParams: Promise.resolve({ komunitas: 'professional' }) });
+  render(Component);
+  expect(screen.getByText(/Kategori pilihan: professional/i)).toBeInTheDocument();
+});
