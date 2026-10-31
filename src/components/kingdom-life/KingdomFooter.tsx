@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 
 export function KingdomFooter() {
@@ -12,9 +13,13 @@ export function KingdomFooter() {
           {/* Col 1: Brand & Office Address */}
           <div className="space-y-4">
             <Link className="flex items-center gap-3 group" href="/">
-              <div className="w-7 h-7 rounded-full bg-gradient-to-tr from-purple-600 to-amber-500 flex items-center justify-center text-white shadow-md">
-                <span className="material-symbols-outlined text-[16px]">flare</span>
-              </div>
+              <Image
+                alt="Kingdom Life Church Logo"
+                className="w-7 h-7 object-contain rounded-md"
+                height={28}
+                src="/images/logo.png"
+                width={28}
+              />
               <span className="text-white font-extrabold text-base tracking-tight uppercase leading-none font-heading">
                 Kingdom Life
               </span>
