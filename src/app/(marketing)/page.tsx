@@ -15,17 +15,17 @@ export async function generateMetadata({ searchParams }: LandingPageProps): Prom
   const sesi = params?.sesi;
   const komunitas = params?.komunitas;
 
-  let title = 'Kingdom Life Church — In the House of GOD, We Flourish';
+  let title = 'GKKD-C Satelit Ciledug — In the House of GOD, We Flourish';
   let description =
     'In the house of GOD, we flourish. Gereja lokal yang relevan dengan dampak global. Membangun generasi-generasi bintang yang berkenan kepada Allah dan dihormati manusia.';
 
   if (sesi) {
     const formattedSesi = sesi.charAt(0).toUpperCase() + sesi.slice(1);
-    title = `Jadwal Ibadah ${formattedSesi} | Kingdom Life Church`;
-    description = `Informasi jadwal ibadah hari Minggu sesi ${formattedSesi} di Kingdom Life Church. Gabung onsite maupun online streaming.`;
+    title = `Jadwal Ibadah ${formattedSesi} | GKKD-C Satelit Ciledug`;
+    description = `Informasi jadwal ibadah hari Minggu sesi ${formattedSesi} di GKKD-C Satelit Ciledug. Gabung onsite maupun online streaming.`;
   } else if (komunitas) {
     const formattedKomunitas = komunitas.charAt(0).toUpperCase() + komunitas.slice(1);
-    title = `Connect Group ${formattedKomunitas} | Komunitas Kingdom Life`;
+    title = `Connect Group ${formattedKomunitas} | Komunitas GKKD-C`;
     description = `Temukan komunitas Connect Group ${formattedKomunitas} untuk bertumbuh bersama dalam iman, doa, dan persahabatan sejati.`;
   }
 
@@ -36,7 +36,7 @@ export async function generateMetadata({ searchParams }: LandingPageProps): Prom
       title,
       description,
       type: 'website',
-      siteName: 'Kingdom Life Church',
+      siteName: 'GKKD-C Satelit Ciledug',
     },
     twitter: {
       card: 'summary_large_image',

@@ -23,7 +23,7 @@ const playfairDisplay = Playfair_Display({
 });
 
 export const metadata: Metadata = {
-  title: 'Kingdom Life Church — In the House of GOD, We Flourish',
+  title: 'GKKD-C Satelit Ciledug — In the House of GOD, We Flourish',
   description: 'Gereja Kontemporer yang Berpusat pada Kristus. Membangun Generasi yang Berakar Kuat & Bertumbuh.',
   icons: {
     icon: [
@@ -34,20 +34,20 @@ export const metadata: Metadata = {
     apple: [{ url: '/apple-icon.png', sizes: '180x180', type: 'image/png' }],
   },
   openGraph: {
-    title: 'Kingdom Life Church — In the House of GOD, We Flourish',
+    title: 'GKKD-C Satelit Ciledug — In the House of GOD, We Flourish',
     description: 'Gereja Kontemporer yang Berpusat pada Kristus. Membangun Generasi yang Berakar Kuat & Bertumbuh.',
     images: [
       {
         url: '/images/logo.png',
         width: 512,
         height: 512,
-        alt: 'Kingdom Life Church Logo',
+        alt: 'GKKD-C Logo',
       },
     ],
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Kingdom Life Church — In the House of GOD, We Flourish',
+    title: 'GKKD-C Satelit Ciledug — In the House of GOD, We Flourish',
     description: 'Gereja Kontemporer yang Berpusat pada Kristus. Membangun Generasi yang Berakar Kuat & Bertumbuh.',
     images: ['/images/logo.png'],
   },
