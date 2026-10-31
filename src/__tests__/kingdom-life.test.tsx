@@ -1,6 +1,10 @@
 import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import LandingPage, { generateMetadata } from '@/app/(marketing)/page';
+import ProfilPage from '@/app/(marketing)/profil/page';
+import KomunitasPage from '@/app/(marketing)/komunitas/page';
+import RenunganPage from '@/app/(marketing)/renungan/page';
+import EventsPage from '@/app/(marketing)/events/page';
 
 // Mock matchMedia
 Object.defineProperty(window, 'matchMedia', {
@@ -37,5 +41,28 @@ describe('LandingPage Stitch Parallax', () => {
     expect(screen.getAllByText(/Jadwal Ibadah/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/About Us/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Community/i).length).toBeGreaterThan(0);
+  });
+});
+
+describe('Additional Stitch Pages', () => {
+  it('renders ProfilPage with vision mission', () => {
+    render(<ProfilPage />);
+    expect(screen.getAllByText(/Gereja Lokal yang Relevan/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders KomunitasPage with connect groups', () => {
+    render(<KomunitasPage />);
+    expect(screen.getAllByText(/Di Sini Ada Rumah/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders RenunganPage with daily devotionals', () => {
+    render(<RenunganPage />);
+    expect(screen.getAllByText(/Berakar Kuat/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Menemukan Kekuatan/i).length).toBeGreaterThan(0);
+  });
+
+  it('renders EventsPage with conference calendar', () => {
+    render(<EventsPage />);
+    expect(screen.getAllByText(/Momen Pertemuan/i).length).toBeGreaterThan(0);
   });
 });

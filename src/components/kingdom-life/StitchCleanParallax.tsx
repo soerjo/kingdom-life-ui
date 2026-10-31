@@ -2,6 +2,7 @@
 
 import React from 'react';
 import { useParallax } from '@/hooks/useParallax';
+import { KingdomHeader } from './KingdomHeader';
 
 export function StitchCleanParallax() {
   useParallax();
@@ -32,87 +33,7 @@ export function StitchCleanParallax() {
       {/*  ========================================================
        TOP NAVIGATION BAR
        ========================================================  */}
-      <header className="fixed top-0 left-0 w-full z-50 bg-black/60 backdrop-blur-lg transition-all duration-300">
-        <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
-          {/*  Logo  */}
-          <a className="flex items-center gap-3 group" href="#">
-            <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-amber-500 flex items-center justify-center text-white shadow-md">
-              <span className="material-symbols-outlined text-[18px]">flare</span>
-            </div>
-            <div className="flex flex-col">
-              <span className="text-white font-extrabold text-base md:text-lg tracking-tight uppercase leading-none">
-                Kingdom Life
-              </span>
-              <span className="text-[9px] uppercase tracking-widest text-white/50 font-medium mt-0.5">
-                Contemporary Church
-              </span>
-            </div>
-          </a>
-          {/*  Navigation Links  */}
-          <nav className="hidden lg:flex items-center gap-8">
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#story"
-            >
-              About Us
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#jadwal-ibadah"
-            >
-              Jadwal Ibadah
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#community"
-            >
-              Community
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#pemuridan"
-            >
-              Pemuridan
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#devotional"
-            >
-              Renungan
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#events"
-            >
-              Events
-            </a>
-            <a
-              className="text-[12px] uppercase font-bold tracking-wider text-white/70 hover:text-white transition-colors"
-              href="#prayer-support"
-            >
-              Doa &amp; Konseling
-            </a>
-          </nav>
-          {/*  Right Header Actions  */}
-          <div className="flex items-center gap-4">
-            <button aria-label="Search" className="text-white/80 hover:text-white transition-colors p-1" type="button">
-              <span className="material-symbols-outlined text-[20px]">search</span>
-            </button>
-            <a
-              className="hidden sm:inline-block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white px-3 py-1.5 transition-colors"
-              href="#prayer-support"
-            >
-              Sign Up
-            </a>
-            <a
-              className="px-5 py-2 rounded-full bg-white/10 hover:bg-white hover:text-black text-white font-bold text-[11px] uppercase tracking-widest transition-all duration-300"
-              href="#jadwal-ibadah"
-            >
-              Join Online
-            </a>
-          </div>
-        </div>
-      </header>
+      <KingdomHeader />
       {/*  ========================================================
        SEGMENT 1: HERO SECTION — GELAP (DARK)
        ========================================================  */}
