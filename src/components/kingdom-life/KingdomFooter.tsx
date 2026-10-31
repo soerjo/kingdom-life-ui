@@ -14,15 +14,20 @@ export function KingdomFooter() {
           <div className="space-y-4">
             <Link className="flex items-center gap-3 group" href="/">
               <Image
-                alt="Kingdom Life Church Logo"
+                alt="GKKD-C Church Logo"
                 className="w-7 h-7 object-contain rounded-md"
                 height={28}
                 src="/images/logo.png"
                 width={28}
               />
-              <span className="text-white font-extrabold text-base tracking-tight uppercase leading-none font-heading">
-                Kingdom Life
-              </span>
+              <div className="flex flex-col">
+                <span className="text-white font-extrabold text-base tracking-tight uppercase leading-none font-heading">
+                  GKKD-C
+                </span>
+                <span className="text-[9px] uppercase tracking-widest text-white/50 font-medium mt-1">
+                  Satelit Ciledug
+                </span>
+              </div>
             </Link>
             <p className="leading-relaxed text-white/70 text-xs">
               Grand Indonesia Menara BCA 39th Floor
@@ -124,7 +129,7 @@ export function KingdomFooter() {
 
         {/* Copyright Bottom Bar */}
         <div className="pt-8 border-t border-white/10 flex flex-col sm:flex-row items-center justify-between gap-4 text-[11px] text-white/40">
-          <p>© 2026 Kingdom Life Church. All rights reserved. In the House of GOD, We Flourish.</p>
+          <p>© 2026 GKKD-C Satelit Ciledug. All rights reserved. In the House of GOD, We Flourish.</p>
           <p className="font-mono text-[10px]">KLIFE.CONTEMPORARY.CHURCH</p>
         </div>
       </div>

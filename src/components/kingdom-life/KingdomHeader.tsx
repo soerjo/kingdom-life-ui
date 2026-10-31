@@ -24,7 +24,7 @@ export function KingdomHeader() {
         {/* Logo */}
         <Link className="flex items-center gap-3 group" href="/">
           <Image
-            alt="Kingdom Life Church Logo"
+            alt="GKKD-C Church Logo"
             className="w-8 h-8 object-contain rounded-lg"
             height={32}
             src="/images/logo.png"
@@ -32,10 +32,10 @@ export function KingdomHeader() {
           />
           <div className="flex flex-col">
             <span className="text-white font-extrabold text-base md:text-lg tracking-tight uppercase leading-none">
-              Kingdom Life
+              GKKD-C
             </span>
             <span className="text-[9px] uppercase tracking-widest text-white/50 font-medium mt-0.5">
-              Contemporary Church
+              Satelit Ciledug
             </span>
           </div>
         </Link>
