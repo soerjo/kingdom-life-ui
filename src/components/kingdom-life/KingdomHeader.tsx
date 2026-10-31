@@ -1,6 +1,7 @@
 'use client';
 
 import React from 'react';
+import Image from 'next/image';
 import Link from 'next/link';
 import { usePathname } from 'next/navigation';
 
@@ -22,9 +23,13 @@ export function KingdomHeader() {
       <div className="max-w-7xl mx-auto px-6 lg:px-12 h-20 flex items-center justify-between">
         {/* Logo */}
         <Link className="flex items-center gap-3 group" href="/">
-          <div className="w-8 h-8 rounded-full bg-gradient-to-tr from-purple-600 to-amber-500 flex items-center justify-center text-white shadow-md">
-            <span className="material-symbols-outlined text-[18px]">flare</span>
-          </div>
+          <Image
+            alt="Kingdom Life Church Logo"
+            className="w-8 h-8 object-contain rounded-lg"
+            height={32}
+            src="/images/logo.png"
+            width={32}
+          />
           <div className="flex flex-col">
             <span className="text-white font-extrabold text-base md:text-lg tracking-tight uppercase leading-none">
               Kingdom Life
