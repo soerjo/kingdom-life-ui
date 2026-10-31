@@ -36,13 +36,13 @@ export function KingdomHeader() {
         </Link>
 
         {/* Navigation Links */}
-        <nav className="hidden lg:flex items-center gap-8">
+        <nav className="flex items-center gap-6 md:gap-8 overflow-x-auto no-scrollbar py-2">
           {navLinks.map((link) => {
             const isActive = pathname === link.href;
             return (
               <Link
                 key={link.href}
-                className={`text-[12px] uppercase font-bold tracking-wider transition-colors ${
+                className={`text-[12px] uppercase font-bold tracking-wider transition-colors whitespace-nowrap ${
                   isActive ? 'text-amber-400 font-extrabold' : 'text-white/70 hover:text-white'
                 }`}
                 href={link.href}
@@ -52,22 +52,6 @@ export function KingdomHeader() {
             );
           })}
         </nav>
-
-        {/* Right Header Actions */}
-        <div className="flex items-center gap-4">
-          <Link
-            className="hidden sm:inline-block text-[11px] font-bold uppercase tracking-widest text-white/80 hover:text-white px-3 py-1.5 transition-colors"
-            href="/#prayer-support"
-          >
-            Sign Up
-          </Link>
-          <Link
-            className="px-5 py-2 rounded-full bg-white/10 hover:bg-white hover:text-black text-white font-bold text-[11px] uppercase tracking-widest transition-all duration-300"
-            href="/#jadwal-ibadah"
-          >
-            Join Online
-          </Link>
-        </div>
       </div>
     </header>
   );
