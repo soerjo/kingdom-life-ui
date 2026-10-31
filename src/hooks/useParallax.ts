@@ -1,29 +1,53 @@
 'use client';
 
-import { useRef } from 'react';
-import { useScroll, useTransform, MotionValue } from 'framer-motion';
+import { useEffect } from 'react';
 
-interface ParallaxOptions<T extends HTMLElement = HTMLElement> {
-  speed?: number;
-  ref?: React.RefObject<T | null>;
-}
+export function useParallax() {
+  useEffect(() => {
+    if (typeof window === 'undefined') return;
 
-export function useParallax<T extends HTMLElement = HTMLDivElement>(
-  options?: ParallaxOptions<T>,
-): {
-  ref: React.RefObject<T | null>;
-  y: MotionValue<string>;
-} {
-  const internalRef = useRef<T | null>(null);
-  const targetRef = options?.ref ?? internalRef;
+    if (window.matchMedia) {
+      const prefersReducedMotion = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+      if (prefersReducedMotion) return;
+    }
 
-  const { scrollYProgress } = useScroll({
-    target: targetRef,
-    offset: ['start end', 'end start'],
-  });
+    const parallaxItems = document.querySelectorAll<HTMLElement>('[data-parallax-speed]');
+    let isScheduled = false;
 
-  const speed = options?.speed ?? 0.2;
-  const y = useTransform(scrollYProgress, [0, 1], [`${speed * -50}vh`, `${speed * 50}vh`]);
+    function renderParallax() {
+      const windowHeight = window.innerHeight;
 
-  return { ref: targetRef, y };
+      parallaxItems.forEach((el) => {
+        const speed = parseFloat(el.getAttribute('data-parallax-speed') || '0');
+        const rect = el.getBoundingClientRect();
+
+        if (rect.bottom >= -150 && rect.top <= windowHeight + 150) {
+          const elementCenter = rect.top + rect.height / 2;
+          const viewportCenter = windowHeight / 2;
+          const delta = elementCenter - viewportCenter;
+          const translateY = (delta * speed).toFixed(2);
+
+          el.style.transform = `translate3d(0, ${translateY}px, 0)`;
+        }
+      });
+
+      isScheduled = false;
+    }
+
+    function onScroll() {
+      if (!isScheduled) {
+        window.requestAnimationFrame(renderParallax);
+        isScheduled = true;
+      }
+    }
+
+    window.addEventListener('scroll', onScroll, { passive: true });
+    window.addEventListener('resize', onScroll, { passive: true });
+    renderParallax();
+
+    return () => {
+      window.removeEventListener('scroll', onScroll);
+      window.removeEventListener('resize', onScroll);
+    };
+  }, []);
 }

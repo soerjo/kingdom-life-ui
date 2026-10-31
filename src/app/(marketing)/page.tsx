@@ -1,6 +1,6 @@
 import React from 'react';
 import type { Metadata } from 'next';
-import { KingdomLifeClient } from '@/components/kingdom-life/KingdomLifeClient';
+import { StitchCleanParallax } from '@/components/kingdom-life/StitchCleanParallax';
 
 interface LandingPageProps {
   searchParams: Promise<{
@@ -17,7 +17,7 @@ export async function generateMetadata({ searchParams }: LandingPageProps): Prom
 
   let title = 'Kingdom Life Church — In the House of GOD, We Flourish';
   let description =
-    'Gereja Kontemporer yang Berpusat pada Kristus. Membangun Generasi yang Berakar Kuat, Bertumbuh dalam Komunitas, dan Berbuah Lebat.';
+    'In the house of GOD, we flourish. Gereja lokal yang relevan dengan dampak global. Membangun generasi-generasi bintang yang berkenan kepada Allah dan dihormati manusia.';
 
   if (sesi) {
     const formattedSesi = sesi.charAt(0).toUpperCase() + sesi.slice(1);
@@ -46,14 +46,6 @@ export async function generateMetadata({ searchParams }: LandingPageProps): Prom
   };
 }
 
-export default async function LandingPage({ searchParams }: LandingPageProps) {
-  const params = await searchParams;
-
-  return (
-    <KingdomLifeClient
-      initialServiceFilter={params?.sesi}
-      initialConnectCategory={params?.komunitas}
-      initialTopic={params?.topic}
-    />
-  );
+export default async function LandingPage() {
+  return <StitchCleanParallax />;
 }

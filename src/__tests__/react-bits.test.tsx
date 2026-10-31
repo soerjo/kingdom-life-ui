@@ -1,7 +1,7 @@
 import { render, screen, fireEvent, act } from '@testing-library/react';
 import { describe, it, expect, vi, beforeEach, afterEach } from 'vitest';
 import { CountUp, SplitText, SpotlightCard, ShinyText } from '@/components/react-bits';
-import { useParallax } from '@/hooks';
+import { useParallax } from '@/hooks/useParallax';
 
 // Mock framer-motion
 vi.mock('framer-motion', () => ({
@@ -40,6 +40,11 @@ describe('React Bits - CountUp', () => {
   it('handles delay and cleanup', () => {
     const { unmount } = render(<CountUp end={50} delay={1} duration={0.5} />);
     unmount();
+  });
+
+  it('handles custom duration <= 0 fallback', () => {
+    render(<CountUp end={10} duration={0} />);
+    expect(screen.getByText('0')).toBeInTheDocument();
   });
 });
 
@@ -82,7 +87,6 @@ describe('React Bits - SpotlightCard', () => {
     const card = container.firstChild as HTMLDivElement;
     expect(card).toBeInTheDocument();
 
-    // Mock getBoundingClientRect
     card.getBoundingClientRect = vi.fn(() => ({
       left: 10,
       top: 20,
@@ -109,21 +113,15 @@ describe('React Bits - ShinyText', () => {
 });
 
 describe('Hooks - useParallax', () => {
-  function TestParallaxComponent({ speed }: { speed?: number }) {
-    const { ref } = useParallax({ speed });
-    return <div ref={ref}>Parallax Target</div>;
+  function TestParallaxComponent() {
+    useParallax();
+    return <div data-parallax-speed="0.1">Parallax Target</div>;
   }
 
-  it('initializes useParallax with default and custom speed', () => {
-    const { rerender } = render(<TestParallaxComponent />);
+  it('executes parallax scroll calculations safely', () => {
+    render(<TestParallaxComponent />);
     expect(screen.getByText('Parallax Target')).toBeInTheDocument();
-
-    rerender(<TestParallaxComponent speed={0.5} />);
-    expect(screen.getByText('Parallax Target')).toBeInTheDocument();
+    fireEvent.scroll(window);
+    fireEvent.resize(window);
   });
-});
-
-it('handles custom duration <= 0 fallback', () => {
-  render(<CountUp end={10} duration={0} />);
-  expect(screen.getByText('0')).toBeInTheDocument();
 });

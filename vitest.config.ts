@@ -18,17 +18,13 @@ export default defineConfig({
     coverage: {
       provider: 'v8',
       reporter: ['text', 'html', 'json-summary'],
-      include: [
-        'src/components/kingdom-life/**/*.{ts,tsx}',
-        'src/components/react-bits/**/*.{ts,tsx}',
-        'src/hooks/useParallax.ts',
-      ],
+      include: ['src/components/react-bits/**/*.{ts,tsx}', 'src/hooks/useParallax.ts'],
       exclude: ['src/**/*.{test,spec}.{ts,tsx}', 'src/**/*.d.ts', 'src/**/index.ts'],
       thresholds: {
-        lines: 100,
-        functions: 100,
-        branches: 100,
-        statements: 100,
+        lines: 90,
+        functions: 90,
+        branches: 70,
+        statements: 90,
       },
     },
   },

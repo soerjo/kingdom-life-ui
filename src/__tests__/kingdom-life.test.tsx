@@ -2,26 +2,22 @@ import { render, screen } from '@testing-library/react';
 import { describe, it, expect, vi } from 'vitest';
 import LandingPage, { generateMetadata } from '@/app/(marketing)/page';
 
-// Mock next/image
-vi.mock('next/image', () => ({
-  default: ({ alt = '', ...rest }: React.ImgHTMLAttributes<HTMLImageElement>) => (
-    // eslint-disable-next-line @next/next/no-img-element
-    <img alt={alt} {...rest} />
-  ),
-}));
+// Mock matchMedia
+Object.defineProperty(window, 'matchMedia', {
+  writable: true,
+  value: vi.fn().mockImplementation((query) => ({
+    matches: false,
+    media: query,
+    onchange: null,
+    addListener: vi.fn(),
+    removeListener: vi.fn(),
+    addEventListener: vi.fn(),
+    removeEventListener: vi.fn(),
+    dispatchEvent: vi.fn(),
+  })),
+});
 
-// Mock framer-motion
-vi.mock('framer-motion', () => ({
-  useScroll: vi.fn(() => ({ scrollYProgress: { get: () => 0.5 } })),
-  useTransform: vi.fn(() => ({ get: () => '0vh' })),
-  useInView: vi.fn(() => true),
-  motion: {
-    div: ({ children, ...rest }: React.HTMLAttributes<HTMLDivElement>) => <div {...rest}>{children}</div>,
-    span: ({ children, ...rest }: React.HTMLAttributes<HTMLSpanElement>) => <span {...rest}>{children}</span>,
-  },
-}));
-
-describe('LandingPage SSR & Client Component', () => {
+describe('LandingPage Stitch Parallax', () => {
   it('generates dynamic SSR metadata based on searchParams', async () => {
     const defaultMeta = await generateMetadata({ searchParams: Promise.resolve({}) });
     expect(defaultMeta.title).toContain('Kingdom Life Church');
@@ -33,18 +29,13 @@ describe('LandingPage SSR & Client Component', () => {
     expect(cgMeta.title).toContain('Connect Group Youth');
   });
 
-  it('renders Server Component with SSR searchParams', async () => {
-    const Component = await LandingPage({ searchParams: Promise.resolve({ sesi: 'pagi' }) });
+  it('renders original Stitch Clean Parallax DOM elements', async () => {
+    const Component = await LandingPage();
     render(Component);
     expect(screen.getAllByText(/Kingdom Life/i).length).toBeGreaterThan(0);
-    expect(screen.getByText('Flourish')).toBeInTheDocument();
+    expect(screen.getAllByText(/flourish/i).length).toBeGreaterThan(0);
     expect(screen.getAllByText(/Jadwal Ibadah/i).length).toBeGreaterThan(0);
-    expect(screen.getByText(/Filter Sesi Aktif:/i)).toBeInTheDocument();
+    expect(screen.getAllByText(/About Us/i).length).toBeGreaterThan(0);
+    expect(screen.getAllByText(/Community/i).length).toBeGreaterThan(0);
   });
-});
-
-it('renders initialConnectCategory when provided via searchParams', async () => {
-  const Component = await LandingPage({ searchParams: Promise.resolve({ komunitas: 'professional' }) });
-  render(Component);
-  expect(screen.getByText(/Kategori pilihan: professional/i)).toBeInTheDocument();
 });
